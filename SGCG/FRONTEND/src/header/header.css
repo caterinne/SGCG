@@ -1,0 +1,55 @@
+/* src/header/header.css */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #856459;
+  color: white;
+  padding: 15px 20px;
+  width: 100%;
+  box-sizing: border-box; /* Asegura que el padding no incremente el ancho total */
+  position: fixed; /* Fija el header en la parte superior */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  white-space: nowrap; /* Evita que el logo se parta en varias líneas */
+}
+
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-actions button {
+  background-color: #65403d;
+  color: #f6e8df;
+  font-weight: bold;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.user-actions button:hover {
+  color: #f6e8df;
+  background-color: #856459;
+}
+
+.user-actions .icon {
+  margin-left: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #f6e8df;
+}
+
+.search-bar {
+  flex: 3;
+  margin: 0 20px;
+}
+
