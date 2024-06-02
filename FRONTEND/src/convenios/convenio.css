@@ -1,0 +1,36 @@
+.body {
+  padding: 30px;
+  background-color: #f6e8df;
+}
+
+.table-container {
+  margin-top: 20px;
+  background-color: #f6e8df;
+}
+
+.caducado {
+  color: #af302e;
+  background-color: #ffe2dd;
+  border-radius: 9px;
+  display: inline-block;
+  padding: 3px 20px;
+}
+
+.vigente {
+  color: #34684e;
+  background-color: #dceedc;
+  border-radius: 9px;
+  display: inline-block;
+  padding: 3px 35px;
+}
+
+.MuiTablePagination-actions {
+  gap: 0px !important;
+  padding: 0 4px !important;
+}
+
+.icon-container {
+  justify-content: center;
+  gap: 1px;
+  padding: 1px;
+}
