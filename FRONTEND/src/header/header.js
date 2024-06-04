@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import LoginService from '../services/LoginService';
 import './header.css';
 
 const CssTextField = styled(TextField)({
@@ -24,6 +25,10 @@ const CssTextField = styled(TextField)({
     },
   },
 });
+const handleLogout = () => {
+  LoginService.logout();
+  window.location.href = '/';
+};
 
 const Header = ({ filter, onFilterChange }) => {
   return (
@@ -45,10 +50,11 @@ const Header = ({ filter, onFilterChange }) => {
       <div className="user-actions">
         <button>Agregar</button>
         <FontAwesomeIcon icon={faUser} className="icon user-icon" />
-        <FontAwesomeIcon icon={faRightFromBracket} className="icon settings-icon" />
+        <FontAwesomeIcon icon={faRightFromBracket} className="icon settings-icon" onClick={handleLogout} />
       </div>
     </div>
   );
 };
+
 
 export default Header;

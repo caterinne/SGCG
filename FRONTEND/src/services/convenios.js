@@ -7,6 +7,7 @@ export const getConvenios = async () => {
     }
     return await response.json();
 };
+
 export const getConvenioById = async (id) => {
     const response = await fetch(`${API_URL}/Convenios/${id}`);
     if (!response.ok) {

@@ -11,6 +11,7 @@ import { getConvenios, deleteConvenio } from '../services/convenios';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import './convenio.css';
+import LoginService from '../services/LoginService';
 
 const StyledTablePagination = styled(TablePagination)(({ theme }) => ({
   '& .MuiTablePagination-toolbar': {
@@ -23,8 +24,8 @@ const StyledTablePagination = styled(TablePagination)(({ theme }) => ({
     marginLeft: '8px',
     display: 'flex',
     alignItems: 'center',
-    gap: '0px',  // Elimina el espacio entre las flechas
-    padding: '0 4px' // Ajusta el padding para un mejor ajuste
+    gap: '0px',
+    padding: '0 4px'
   },
   '& .MuiSelect-icon': {
     top: 'calc(50% - 12px)',
@@ -41,6 +42,7 @@ const Convenio = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const navigate = useNavigate();
+  const userRole = LoginService.getUserRole();
 
   useEffect(() => {
     const fetchConvenios = async () => {
@@ -150,12 +152,16 @@ const Convenio = () => {
                     <IconButton onClick={() => handleViewDetails(row)}>
                       <FindInPage />
                     </IconButton>
-                    <IconButton onClick={() => handleEdit(row)}>
-                      <Edit />
-                    </IconButton>
-                    <IconButton onClick={() => handleDelete(row._id)}>
-                      <Delete />
-                    </IconButton>
+                    {userRole !== 'viewer' && (
+                      <>
+                        <IconButton onClick={() => handleEdit(row)}>
+                          <Edit />
+                        </IconButton>
+                        <IconButton onClick={() => handleDelete(row._id)}>
+                          <Delete />
+                        </IconButton>
+                      </>
+                    )}
                   </div>
                 </TableCell>
               </TableRow>

@@ -1,34 +1,37 @@
-const users = [
-  { username: 'admin', password: 'admin', role: 'admin' },
-  { username: 'user', password: 'user', role: 'user' },
-  { username: 'viewer', password: 'viewer', role: 'viewer' },
-];
+import axios from 'axios';
+import { API_URL } from '../config';
 
-const login = (username, password) => {
-  const user = users.find(
-    (u) => u.username === username && u.password === password
-  );
-  if (user) {
-    sessionStorage.setItem('user', JSON.stringify(user));
-    return user;
-  }
-  return null;
+const login = async (email, contrasena) => {
+    try {
+        const response = await axios.post(`${API_URL}/Usuarios/login`, {
+            email,
+            contrasena
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error en el login:', error);
+        return null;
+    }
 };
 
 const getUserRole = () => {
-  const user = JSON.parse(sessionStorage.getItem('user'));
-  return user ? user.role : null;
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    return user ? user.rol : null;
 };
 
 const logout = () => {
-  sessionStorage.removeItem('user');
+    sessionStorage.removeItem('user');
 };
 
-// Asignar el objeto a una variable antes de exportar
+const isAuthenticated = () => {
+    return sessionStorage.getItem('user') !== null;
+};
+
 const LoginService = {
-  login,
-  getUserRole,
-  logout,
+    login,
+    getUserRole,
+    logout,
+    isAuthenticated
 };
 
 export default LoginService;

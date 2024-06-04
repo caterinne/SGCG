@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -10,21 +10,22 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const initialValues = {
-    username: '',
-    password: ''
+    email: '',
+    contrasena: ''
   };
 
   const validationSchema = Yup.object({
-    username: Yup.string().required('Ingrese un usuario'),
-    password: Yup.string().required('Ingrese una contraseña')
+    email: Yup.string().email('Ingrese un email válido').required('Ingrese un email'),
+    contrasena: Yup.string().required('Ingrese una contraseña')
   });
 
-  const onSubmit = (values) => {
-    const user = loginService.login(values.username, values.password);
+  const onSubmit = async (values) => {
+    const user = await loginService.login(values.email, values.contrasena);
     if (user) {
+      sessionStorage.setItem('user', JSON.stringify(user)); // Guardar el usuario en sessionStorage
       navigate('/home');
     } else {
-      setError('El usuario o la contraseña no son correctos');
+      setError('El email o la contraseña no son correctos');
     }
   };
 
@@ -41,21 +42,21 @@ const Login = () => {
           <Form>
             <div className="form-group">
               <Field
-                type="text"
-                name="username"
-                placeholder="Usuario"
+                type="email"
+                name="email"
+                placeholder="Email"
                 onChange={(e) => {
                   handleChange(e);
                   setError(null);
                 }}
                 onBlur={handleBlur}
               />
-              <ErrorMessage name="username" component="div" className="error" />
+              <ErrorMessage name="email" component="div" className="error" />
             </div>
             <div className="form-group">
               <Field
                 type="password"
-                name="password"
+                name="contrasena"
                 placeholder="Contraseña"
                 onChange={(e) => {
                   handleChange(e);
@@ -63,7 +64,7 @@ const Login = () => {
                 }}
                 onBlur={handleBlur}
               />
-              <ErrorMessage name="password" component="div" className="error" />
+              <ErrorMessage name="contrasena" component="div" className="error" />
             </div>
             {error && <div className="error">{error}</div>}
             <button type="submit">Iniciar Sesión</button>
@@ -75,4 +76,3 @@ const Login = () => {
 };
 
 export default Login;
-

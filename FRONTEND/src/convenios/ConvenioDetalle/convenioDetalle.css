@@ -1,0 +1,45 @@
+.convenio-detalle-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin-top: 60px;
+  }
+  
+  .convenio-detalle-header h1 {
+    color: black;
+    text-align: center;
+
+  }
+  
+  .convenio-detalle-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px; 
+  }
+  
+  .convenio-detalle-section {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .convenio-detalle-section h2 {
+    margin-top: 0;
+    color: black;
+  }
+  
+  .convenio-detalle-item {
+    margin-bottom: 10px;
+  }
+  
+  .convenio-detalle-item strong {
+    display: inline-block;
+    width: 150px;
+  }
+  
+  .convenio-detalle-item p {
+    display: inline-block;
+    margin: 0;
+  }
+  
