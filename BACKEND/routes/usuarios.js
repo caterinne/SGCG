@@ -28,19 +28,33 @@ router.get('/:id', async (req, res) => {
 
 // Crear un nuevo usuario
 router.post('/crear', async (req, res) => {
+    const { nombre, apellido, email, contrasena, rol } = req.body;
+
     try {
-        const usuario = new Usuario(req.body);
-        await usuario.save();
-        res.status(201).send(usuario);
+        const nuevoUsuario = new Usuario({
+            nombre,
+            apellido,
+            email,
+            contrasena, 
+            rol,
+        });
+
+        await nuevoUsuario.save();
+        res.status(201).json(nuevoUsuario);
     } catch (error) {
-        res.status(400).send(error);
+        console.error('Error al crear usuario:', error);
+        res.status(500).json({ message: 'Error al crear usuario', error });
     }
 });
 
 // Actualizar un usuario por ID
 router.put('/:id', async (req, res) => {
     try {
-        const usuario = await Usuario.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        const { contrasena, ...rest } = req.body;
+        if (contrasena) {
+            rest.contrasena = contrasena;
+        }
+        const usuario = await Usuario.findByIdAndUpdate(req.params.id, rest, { new: true, runValidators: true });
         if (!usuario) {
             return res.status(404).send({ message: "Usuario no encontrado" });
         }
@@ -49,6 +63,7 @@ router.put('/:id', async (req, res) => {
         res.status(400).send(error);
     }
 });
+
 
 // Eliminar un usuario por ID
 router.delete('/:id', async (req, res) => {
@@ -62,5 +77,31 @@ router.delete('/:id', async (req, res) => {
         res.status(500).send(error);
     }
 });
+
+
+// Ruta de login
+router.post('/login', async (req, res) => {
+    const { email, contrasena } = req.body;
+
+    try {
+        const user = await Usuario.findOne({ email });
+        if (!user) {
+            return res.status(401).json({ message: 'Credenciales incorrectas' });
+        }
+
+        if (user.contrasena !== contrasena) {
+            return res.status(401).json({ message: 'Credenciales incorrectas' });
+        }
+
+        res.json({
+            email: user.email,
+            rol: user.rol,
+        });
+    } catch (error) {
+        console.error('Error del servidor:', error);
+        res.status(500).json({ message: 'Error del servidor', error });
+    }
+});
+
 
 module.exports = router;
