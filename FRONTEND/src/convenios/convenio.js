@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,
-  IconButton, TablePagination
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination
 } from '@mui/material';
-import { Delete, Edit, FindInPage } from '@mui/icons-material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faTrash, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
 import Header from '../header/header';
 import { styled } from '@mui/material/styles';
 import { getConvenios, deleteConvenio } from '../services/convenios';
@@ -62,7 +62,7 @@ const Convenio = () => {
   };
 
   const handleDelete = async (id) => {
-    const isConfirmed = window.confirm(`¿Estás seguro de que deseas eliminar el convenio con ID ${id}?`);
+    const isConfirmed = window.confirm(`¿Estás seguro de que deseas eliminar el convenio: ${id}?`);
     if (isConfirmed) {
       try {
         await deleteConvenio(id);
@@ -149,17 +149,11 @@ const Convenio = () => {
                 <TableCell>{row.coordinador.email}</TableCell>
                 <TableCell>
                   <div className="icon-container">
-                    <IconButton onClick={() => handleViewDetails(row)}>
-                      <FindInPage />
-                    </IconButton>
+                    <FontAwesomeIcon icon={faCircleInfo} title="Ver detalles" className="icon-info" onClick={() => handleViewDetails(row)}/>
                     {userRole !== 'viewer' && (
                       <>
-                        <IconButton onClick={() => handleEdit(row)}>
-                          <Edit />
-                        </IconButton>
-                        <IconButton onClick={() => handleDelete(row._id)}>
-                          <Delete />
-                        </IconButton>
+                        <FontAwesomeIcon icon={faPen} title="Editar" className="icon-edit" onClick={() => handleEdit(row)}/>
+                        <FontAwesomeIcon icon={faTrash} title="Eliminar" className="icon-delete" onClick={() => handleDelete(row._id)}/>
                       </>
                     )}
                   </div>

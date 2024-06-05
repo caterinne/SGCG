@@ -23,3 +23,14 @@ export const getInstitucionById = async (id) => {
     }
     return await response.json();
 };
+
+export const deleteInstitucion = async (id) => {
+    const response = await fetch(`${API_URL}/Instituciones/${id}`, {
+        method: 'DELETE',
+    });
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return await response.json();
+};
+

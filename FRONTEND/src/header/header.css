@@ -6,7 +6,7 @@
   background-color: #856459;
   color: white;
   padding: 15px 20px;
-  width: 100%;
+  width: 98%;
   box-sizing: border-box; /* Asegura que el padding no incremente el ancho total */
   position: fixed; /* Fija el header en la parte superior */
   top: 0;
@@ -17,7 +17,8 @@
 .logo {
   font-size: 1.5em;
   font-weight: bold;
-  white-space: nowrap; /* Evita que el logo se parta en varias líneas */
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 

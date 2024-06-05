@@ -33,7 +33,7 @@ const handleLogout = () => {
 const Header = ({ filter, onFilterChange }) => {
   return (
     <div className="header-container">
-      <div className="logo">LOGO</div>
+      <div className="logo" title="Inicio" >LOGO</div>
       <div className="search-bar">
         <CssTextField
           label="Buscar por alcance, institución, país, convenio, vigencia..."
@@ -49,8 +49,8 @@ const Header = ({ filter, onFilterChange }) => {
       </div>
       <div className="user-actions">
         <button>Agregar</button>
-        <FontAwesomeIcon icon={faUser} className="icon user-icon" />
-        <FontAwesomeIcon icon={faRightFromBracket} className="icon settings-icon" onClick={handleLogout} />
+        <FontAwesomeIcon icon={faUser} title="Perfil" className="icon user-icon" />
+        <FontAwesomeIcon icon={faRightFromBracket} title="Cerrar sesión" className="icon settings-icon" onClick={handleLogout} />
       </div>
     </div>
   );

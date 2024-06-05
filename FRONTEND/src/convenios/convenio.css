@@ -1,11 +1,13 @@
 .body {
-  padding: 30px;
   background-color: #f6e8df;
+  width: 97%;
+  height: 90%;
 }
 
 .table-container {
-  margin-top: 20px;
   background-color: #f6e8df;
+  width: 97%;
+  height: 90%;
 }
 
 .caducado {
@@ -30,7 +32,14 @@
 }
 
 .icon-container {
-  justify-content: center;
-  gap: 1px;
-  padding: 1px;
+  align-items: center;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #856459;
+}
+.icon-edit{
+  margin-right: 10px;
+}
+.icon-info{
+  margin-right: 15px;
 }
