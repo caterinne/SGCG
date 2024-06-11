@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import loginService from '../services/LoginService';
 import './login.css';
+import logo from '../assets/Convenios.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Login = () => {
   const onSubmit = async (values) => {
     const user = await loginService.login(values.email, values.contrasena);
     if (user) {
-      sessionStorage.setItem('user', JSON.stringify(user)); // Guardar el usuario en sessionStorage
+      sessionStorage.setItem('user', JSON.stringify(user));
       navigate('/home');
     } else {
       setError('El email o la contraseña no son correctos');
@@ -31,7 +32,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <img src={`${process.env.PUBLIC_URL}/logo3.png`} alt="Logo Ori" />
+        <img src={logo} alt="Logo0" className="logo0" />
       <h1>Ingresar</h1>
       <Formik
         initialValues={initialValues}

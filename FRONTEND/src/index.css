@@ -3,13 +3,10 @@ body, html, #root {
   padding: 0;
   height: 100%;
   width: 100%;
+  background-color: #ffede0;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f6e8df;
-}
-
-#root {
-  width: 100%;
 }
 

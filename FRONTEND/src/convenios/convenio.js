@@ -4,14 +4,15 @@ import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination
 } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faTrash, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import Header from '../header/header';
 import { styled } from '@mui/material/styles';
 import { getConvenios, deleteConvenio } from '../services/convenios';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import './convenio.css';
 import LoginService from '../services/LoginService';
+import EditarConvenioModal from '../modal/EditConvenio';
+import styles from './convenio.css';
 
 const StyledTablePagination = styled(TablePagination)(({ theme }) => ({
   '& .MuiTablePagination-toolbar': {
@@ -41,6 +42,8 @@ const Convenio = () => {
   const [filter, setFilter] = useState('');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedConvenio, setSelectedConvenio] = useState(null); 
   const navigate = useNavigate();
   const userRole = LoginService.getUserRole();
 
@@ -74,8 +77,20 @@ const Convenio = () => {
     }
   };
 
-  const handleEdit = (data) => {
-    // Lógica para editar
+  const handleEdit = (convenio) => {
+    setSelectedConvenio(convenio); 
+    setEditModalOpen(true); 
+  };
+
+  const handleEditModalClose = () => {
+    setEditModalOpen(false); 
+    setSelectedConvenio(null);
+  };
+
+  const handleConvenioUpdated = async () => {
+    setEditModalOpen(false); 
+    const data = await getConvenios();
+    setConvenios(data);
   };
 
   const handleViewDetails = (convenio) => {
@@ -113,9 +128,9 @@ const Convenio = () => {
   };
 
   return (
-    <div className="body">
+    <div className={styles.body}>
       <Header filter={filter} onFilterChange={handleFilterChange} />
-      <TableContainer component={Paper} className="table-container">
+      <TableContainer component={Paper} className={'tableContainer'}>
         <Table>
           <TableHead>
             <TableRow>
@@ -148,12 +163,12 @@ const Convenio = () => {
                 <TableCell>{`${row.coordinador.nombre} ${row.coordinador.apellido}`}</TableCell>
                 <TableCell>{row.coordinador.email}</TableCell>
                 <TableCell>
-                  <div className="icon-container">
-                    <FontAwesomeIcon icon={faCircleInfo} title="Ver detalles" className="icon-info" onClick={() => handleViewDetails(row)}/>
+                  <div className={styles.iconContainer}>
+                    <FontAwesomeIcon icon={faCircleInfo} title="Ver detalles" className={'icon-info'} onClick={() => handleViewDetails(row)} />
                     {userRole !== 'viewer' && (
                       <>
-                        <FontAwesomeIcon icon={faPen} title="Editar" className="icon-edit" onClick={() => handleEdit(row)}/>
-                        <FontAwesomeIcon icon={faTrash} title="Eliminar" className="icon-delete" onClick={() => handleDelete(row._id)}/>
+                        <FontAwesomeIcon icon={faPen} title="Editar" className={'iconEdit'} onClick={() => handleEdit(row)} />
+                        <FontAwesomeIcon icon={faTrash} title="Eliminar" className={'iconDelete'} onClick={() => handleDelete(row._id)} />
                       </>
                     )}
                   </div>
@@ -179,6 +194,14 @@ const Convenio = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </TableContainer>
+      {selectedConvenio && (
+        <EditarConvenioModal
+          open={editModalOpen}
+          onClose={handleEditModalClose}
+          convenio={selectedConvenio}
+          onConvenioUpdated={handleConvenioUpdated}
+        />
+      )}
     </div>
   );
 };

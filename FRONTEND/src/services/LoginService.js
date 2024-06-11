@@ -31,7 +31,7 @@ const LoginService = {
     login,
     getUserRole,
     logout,
-    isAuthenticated
+    isAuthenticated,
 };
 
 export default LoginService;

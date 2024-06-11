@@ -1,22 +1,9 @@
-.coorTitulo {
-  margin-top: 60px;
-  text-align: center;
-  font-size: 27px;
+.usuariosTitulo {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 27px;
 }
-
-.tableContainer3 {
-  background-color: #f6e8df;
-}
-
-.tableContainer3 table td {
-  font-size: 13.2px;
-}
-
-.tableContainer3 table th {
-  font-weight: bold;
-  font-size: 13.2px;
-}
-.dockContainer3 {
+.dockContainer7 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +20,7 @@
     left: 10px;
 }
   
-.dockIcon3 {
+.dockIcon7 {
     margin: 15px 0; 
     font-size: 20px; 
     transition: transform 0.2s, color 0.2s; 
@@ -41,21 +28,20 @@
     color: #856459;
 }
   
-.dockIcon3:hover {
+.dockIcon7:hover {
     transform: scale(1.2); 
     color: #AE9E63; 
 }
-  
-.MuiTablePagination-actions {
-    gap: 0px !important;
-    padding: 0 4px !important;
+
+.tableContainer7 {
+    background-color: #f6e8df;
   }
   
-.icon-container {
-    font-size: 1.3em;
-    cursor: pointer;
-    color: #856459;
-}
-.icon-edit{
-    margin-right: 22px;
-}
+  .tableContainer7 table td {
+    font-size: 13.2px;
+  }
+  
+  .tableContainer7 table th {
+    font-weight: bold;
+    font-size: 13.2px;
+  }

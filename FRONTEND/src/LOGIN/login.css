@@ -1,15 +1,6 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #f6e8df;
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body{
+  background-color: #ffede0;
 }
-
 .login-container {
   background-color: #856459;
   padding: 40px;
@@ -20,11 +11,6 @@ body, html {
   max-width: 300px;
   margin: auto;
   margin-top: 150px;
-}
-
-.login-container img {
-  width: 100px;
-  margin-bottom: 20px;
 }
 
 .login-container h1 {
@@ -79,4 +65,8 @@ button:disabled {
 button:hover:enabled {
   color: #f6e8df;
   background-color: #65403d;
+}
+
+.logo0{
+  height: 110px;
 }

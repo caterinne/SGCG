@@ -1,13 +1,21 @@
-.body {
+body {
   background-color: #f6e8df;
-  width: 97%;
-  height: 90%;
+  width: 94%;
+  height: 100%;
+  padding-left: 60px;
 }
 
-.table-container {
+.tableContainer {
   background-color: #f6e8df;
-  width: 97%;
-  height: 90%;
+}
+
+.tableContainer table td {
+  font-size: 13.2px;
+}
+
+.tableContainer table th {
+  font-weight: bold;
+  font-size: 13.2px;
 }
 
 .caducado {
@@ -23,7 +31,7 @@
   background-color: #dceedc;
   border-radius: 9px;
   display: inline-block;
-  padding: 3px 35px;
+  padding: 3px 30px;
 }
 
 .MuiTablePagination-actions {
@@ -31,15 +39,26 @@
   padding: 0 4px !important;
 }
 
-.icon-container {
+.icon-info {
   align-items: center;
+  margin-right: 10px;
   font-size: 1.2em;
   cursor: pointer;
   color: #856459;
 }
-.icon-edit{
+
+.iconEdit {
+  align-items: center;
   margin-right: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #856459;
 }
-.icon-info{
-  margin-right: 15px;
+
+.iconDelete {
+  align-items: center;
+  margin-right: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #856459;
 }

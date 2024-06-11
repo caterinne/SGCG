@@ -1,5 +1,41 @@
-/* historial.css */
 .historial-container {
-    padding: 20px;
-  }
+    padding-top: 45px;
+    width: 100%;
+    height: 95%;
+    
+}
+
+.histoTitulo {
+    text-align: center;
+    font-size: 27px;
+}
+
+.dock-container4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 30px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-right: 10px;
+    height: calc(100vh - 20vh);
+    position: fixed;
+    top: 70px;
+    left: 10px;
+}
   
+.dock-icon4 {
+    margin: 15px 0; 
+    font-size: 20px; 
+    transition: transform 0.2s, color 0.2s; 
+    cursor: pointer;
+    color: #856459;
+}
+  
+.dock-icon4:hover {
+    transform: scale(1.2); 
+    color: #AE9E63; 
+}

@@ -1,61 +1,50 @@
-body, html, #root {
-  height: 100%;
-  width: 100%;
-}
-
-.container {
+.container1 {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  background-color: #f6e8df;
+  height: 100vh;
 }
 
-header {
-  width: 98%;
-}
-
-
-#content {
-  background-color: #f6e8df;
-  flex-grow: 1;
-}
-
-h1, h2 {
-  margin: 0;
-  color: white;
-}
-
-.header-row {
+.main-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 98%;
-  padding-top: 80px;
-
+  flex: 1;
 }
 
-.convenio-titulo {
-  margin-right: 20px;
-  text-align: center;
-  color: black;
-}
-
-.button-container {
+.dock-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 5px;
+  justify-content: flex-start;
+  width: 30px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 10px;
+  height: calc(100vh - 20vh);
+  position: fixed;
+  top: 70px;
+  left: 10px;
 }
 
-.button-container .MuiIconButton-root {
-  font-size: 1.5rem; /* Tamaño de los íconos */
-  padding: 8px; /* Tamaño del botón */
-}
-
-.icon-container {
-  align-items: center;
-  font-size: 1em;
+.dock-icon {
+  margin: 15px 0; 
+  font-size: 20px; 
+  transition: transform 0.2s, color 0.2s; 
   cursor: pointer;
   color: #856459;
 }
 
+.dock-icon:hover {
+  transform: scale(1.2); 
+  color: #AE9E63; 
+}
+
+.tablaConv {
+  flex: 1;
+}
+
+.convTitulo {
+  text-align: center;
+  margin-top: 55px;
+  font-size: 27px;
+}
