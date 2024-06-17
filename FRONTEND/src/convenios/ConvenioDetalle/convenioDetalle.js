@@ -25,13 +25,12 @@ const ConvenioDetalle = () => {
     fetchConvenio();
   }, [id]);
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('es-ES', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric',
-    });
+  function formatFecha(fecha) {
+    const dateObj = new Date(fecha);
+    const day = dateObj.getUTCDate().toString().padStart(2, '0');
+    const month = (dateObj.getUTCMonth() + 1).toString().padStart(2, '0');
+    const year = dateObj.getUTCFullYear();
+    return `${day}/${month}/${year}`;
   };
 
   if (loading) {
@@ -77,7 +76,7 @@ const ConvenioDetalle = () => {
               <strong>Alcance:</strong> <p>{convenio.alcance}</p>
             </div>
             <div className="convenio-detalle-item">
-              <strong>Vigencia:</strong> <p>{formatDate(convenio.vigencia)}</p>
+              <strong>Vigencia:</strong> <p>{formatFecha(convenio.vigencia)}</p>
             </div>
             <div className="convenio-detalle-item">
               <strong>Año de Firma:</strong> <p>{convenio.ano_firma}</p>

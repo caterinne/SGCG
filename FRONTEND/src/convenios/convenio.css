@@ -26,12 +26,26 @@ body {
   padding: 3px 20px;
 }
 
+.por-expirar {
+  color: orange;
+  background-color: #ffefdd;
+  border-radius: 9px;
+  display: inline-block;
+  padding: 3px 20px;
+}
+
 .vigente {
   color: #34684e;
   background-color: #dceedc;
   border-radius: 9px;
   display: inline-block;
   padding: 3px 30px;
+}
+
+.iconRenew {
+  cursor: pointer;
+  color: orange;
+  font-size: 1.2em;
 }
 
 .MuiTablePagination-actions {
