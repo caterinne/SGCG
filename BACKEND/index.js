@@ -8,6 +8,7 @@ const institucionesRoutes = require('./routes/instituciones');
 const coordinadoresRoutes = require('./routes/coordinadores');
 const conveniosRoutes = require('./routes/convenios');
 const historialRoutes = require('./routes/historial');
+const renovacionesRoutes = require('./routes/renovaciones');
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.use('/api/SGCU/Instituciones', institucionesRoutes);
 app.use('/api/SGCU/Coordinadores', coordinadoresRoutes);
 app.use('/api/SGCU/Convenios', conveniosRoutes);
 app.use('/api/SGCU/Historial', historialRoutes);
+app.use('/api/SGCU/Renovaciones', renovacionesRoutes);
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 5038;

@@ -76,4 +76,14 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// Obtener coordinadores por ID de institución
+router.get('/institucion/:institucionId', async (req, res) => {
+    try {
+        const coordinadores = await Coordinador.find({ institucion: req.params.institucionId });
+        res.send(coordinadores);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
 module.exports = router;

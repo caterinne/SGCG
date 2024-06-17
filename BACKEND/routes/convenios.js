@@ -4,6 +4,27 @@ const Historial = require('../models/historial');
 
 const router = express.Router();
 
+// Obtener convenios por vigencia próxima a expirar
+router.get('/proximos-a-expirar', async (req, res) => {
+    try {
+        const hoy = new Date();
+        const cincoDiasDespues = new Date();
+        cincoDiasDespues.setDate(hoy.getDate() + 5); // Obtener fecha 5 días después
+
+        const convenios = await Convenio.find({
+            vigencia: {
+                $gte: hoy, // Fecha de hoy o después
+                $lte: cincoDiasDespues // Fecha dentro de los próximos 5 días
+            }
+        });
+
+        res.send(convenios);
+    } catch (error) {
+        console.error('Error al obtener los convenios próximos a expirar:', error);
+        res.status(500).send(error);
+    }
+});
+
 // Obtener todos los convenios
 router.get('/', async (req, res) => {
     try {
@@ -105,5 +126,4 @@ router.delete('/:id', async (req, res) => {
         res.status(500).send(error);
     }
 });
-
 module.exports = router;
